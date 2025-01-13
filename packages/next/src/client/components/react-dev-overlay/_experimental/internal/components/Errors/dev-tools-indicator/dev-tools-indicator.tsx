@@ -13,14 +13,14 @@ export function DevToolsIndicator({
   readyErrors,
   fullscreen,
   hide,
-  isTurbopackEnabled,
+  isTurbopack,
 }: {
   versionInfo: VersionInfo | undefined
   readyErrors: ReadyRuntimeError[]
   fullscreen: () => void
   hide: () => void
   hasStaticIndicator?: boolean
-  isTurbopackEnabled: boolean
+  isTurbopack: boolean
 }) {
   return (
     <DevToolsPopover
@@ -29,7 +29,7 @@ export function DevToolsIndicator({
       issueCount={readyErrors.length}
       isStaticRoute={hasStaticIndicator === true}
       hide={hide}
-      isTurbopackEnabled={isTurbopackEnabled}
+      isTurbopack={isTurbopack}
     />
   )
 }
@@ -40,14 +40,14 @@ const DevToolsPopover = ({
   isStaticRoute,
   hide,
   semver,
-  isTurbopackEnabled,
+  isTurbopack,
 }: {
   onIssuesClick: () => void
   issueCount: number
   isStaticRoute: boolean
   hide: () => void
   semver: string | undefined
-  isTurbopackEnabled: boolean
+  isTurbopack: boolean
 }) => {
   // TODO: close when clicking outside
 
@@ -104,7 +104,7 @@ const DevToolsPopover = ({
               ) : null}
 
               <p data-nextjs-dev-tools-version>
-                Turbopack {isTurbopackEnabled ? 'enabled' : 'not enabled'}
+                Turbopack {isTurbopack ? 'enabled' : 'not enabled'}
               </p>
             </div>
           </div>
